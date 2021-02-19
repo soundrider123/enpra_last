@@ -5,6 +5,6 @@ name: EnPra
 runtime_options: {version: 2, client_version: '3', server_version: python3-full}
 metadata: {}
 startup_form: MainForm
-native_deps: {head_html: ''}
+native_deps: {head_html: '<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>'}
 db_schema: []
 renamed: true
