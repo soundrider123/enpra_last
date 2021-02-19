@@ -1,0 +1,33 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: "<style>\n    html, body {\n        margin: 0!important;\n \
+      \       padding: 0!important;\n    }\n</style>\n<meta name=\"viewport\" content=\"\
+      width=device-width, initial-scale=1.0, minimum-scale=1.0\">\n\n<div>\n     \
+      \   <button id=\"start-recording\" >Start Recording</button>\n    </div>\n<script\
+      \ src=\"/RecordRTC.js\"></script>\n    <script type=\"text/javascript\">\n\n\
+      \n    const startRecording = document.getElementById('start-recording');\n \
+      \   let recordAudio;\n\n    function uploadBlob(webmfile) {\n\n        var formData\
+      \ = new FormData();\n        formData.append('file', webmfile);\n\n        $.ajax({\n\
+      \            url: 'http://43.231.114.140:8080/audio',\n            data: formData,\n\
+      \            enctype: 'multipart/form-data',\n            cache: false,\n  \
+      \          contentType: false,\n            processData: false,\n          \
+      \  type: 'POST',\n            success: function (response) {\n             \
+      \   console.log(response);\n            }\n        });\n\n    }\n    // on start\
+      \ button handler\n    startRecording.onclick = function() {\n        startRecording.disabled\
+      \ = true;\n        // make use of HTML 5/WebRTC, JavaScript getUserMedia()\n\
+      \        // to capture the browser microphone stream\n        navigator.getUserMedia({\n\
+      \            audio: true\n        }, function(stream) {\n\n            recordAudio\
+      \ = RecordRTC(stream, {\n                type: 'audio',\n                mimeType:\
+      \ 'audio/webm',\n                recorderType: StereoAudioRecorder,\n      \
+      \          numberOfAudioChannels: 1,\n            });\n\n            recordAudio.startRecording();\n\
+      \        }, function(error) {\n            console.error(JSON.stringify(error));\n\
+      \        });\n\n        let recordingInterval = setInterval(function () {\n\
+      \            clearInterval(recordingInterval);\n            recordAudio.stopRecording(function\
+      \ () {\n                let blob = recordAudio.getBlob();\n                if\
+      \ (blob.size) { // prevent empty blobs\n                    uploadBlob(blob);\n\
+      \                }\n            });\n            startRecording.disabled = false;\n\
+      \        }, 3000);\n\n    };\n\n    \n    </script>"}
+components: []
+is_package: true
+custom_component: true
