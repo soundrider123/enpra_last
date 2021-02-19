@@ -6,11 +6,11 @@ container:
       \ = document.getElementById('start-recording');\n    var recordAudio;\n\n  \
       \    \n    function uploadBlob(webmfile) {\n\n        var formData = new FormData();\n\
       \        formData.append('file', webmfile);\n\n        $.ajax({\n          \
-      \  url: 'http://43.231.114.140:8080/audio',\n            data: formData,\n \
-      \           enctype: 'multipart/form-data',\n            cache: false,\n   \
-      \         contentType: false,\n            processData: false,\n           \
-      \ type: 'POST',\n            success: function (response) {\n              \
-      \  console.log(response);\n            }\n        });\n\n    }      \n    \n\
+      \  url: 'https://43.231.114.140:8080/audio',\n            data: formData,\n\
+      \            enctype: 'multipart/form-data',\n            cache: false,\n  \
+      \          contentType: false,\n            processData: false,\n          \
+      \  type: 'POST',\n            success: function (response) {\n             \
+      \   console.log(response);\n            }\n        });\n\n    }      \n    \n\
       \      startRecording.onclick = function() {\n        startRecording.disabled\
       \ = true;\n        // make use of HTML 5/WebRTC, JavaScript getUserMedia()\n\
       \        // to capture the browser microphone stream\n        navigator.getUserMedia({\n\
