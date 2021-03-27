@@ -27,3 +27,7 @@ components:
     properties: {}
     name: label_2
     layout_properties: {grid_position: 'DJRABK,FBUVJW'}
+- type: Timer
+  properties: {}
+  name: timer_1
+  event_bindings: {tick: timer_tick}

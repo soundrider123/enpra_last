@@ -5,6 +5,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime
+import requests
 
 def get_newid():
   max_ids = app_tables.users.search(tables.order_by("userid", ascending=False))
@@ -34,6 +35,11 @@ def get_userid():
   return userid
 
 @anvil.server.callable
+def get_transcription(userid):
+  result = requests.get(f'https://43.231.114.140:8080/trans?userid={str(userid)}', verify=False).content.decode("utf-8")
+  return result
+
+@anvil.server.callable
 def get_htmlcode(userid):
   htmlcode = """
 
@@ -44,7 +50,10 @@ def get_htmlcode(userid):
 
     var startRecording = document.getElementById('start-recording');
     var recordAudio;
-
+    
+    function get_startrecording_disabled() {       
+        return startRecording.disabled;
+    } 
       
     function uploadBlob(webmfile) {
 

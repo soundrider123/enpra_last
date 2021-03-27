@@ -13,7 +13,18 @@ class MainForm(MainFormTemplate):
     self.init_components(**properties)
     
     anvil.google.auth.login()
-    userid = anvil.server.call('get_userid')
-    print(userid)
-    self.audiorecord_1.init_userid(userid)
+    self.userid = anvil.server.call('get_userid')
+    
+    self.audiorecord_1.init_userid(self.userid)
+    self.prev = False
+
+  def timer_tick(self, **event_args):    
+    isrecording = anvil.js.call_js('get_startrecording_disabled') 
+    #print(isrecording)
+    if (self.prev == True and isrecording == False):
+      transcription = anvil.server.call('get_transcription', self.userid)
+      self.label_2.text = transcription
+    
+    self.prev = isrecording
+
 
