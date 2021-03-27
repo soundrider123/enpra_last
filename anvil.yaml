@@ -1,4 +1,10 @@
-services: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {auto_create_missing_columns: false}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {}
 package_name: EnPra
 allow_embedding: false
 name: EnPra
@@ -6,5 +12,23 @@ runtime_options: {version: 2, client_version: '3', server_version: python3-full}
 metadata: {}
 startup_form: MainForm
 native_deps: {head_html: '<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>'}
-db_schema: []
+db_schema:
+- name: Users
+  id: 114436
+  python_name: users
+  columns:
+    ERxZQudtb0s=:
+      name: signed_up
+      type: datetime
+      admin_ui: {order: 1, width: 200}
+    Vs3AkZ5+GKQ=:
+      name: userid
+      type: number
+      admin_ui: {order: 2, width: 200}
+    YvySLo2i9QA=:
+      name: email
+      type: string
+      admin_ui: {order: 0, width: 200}
+  access: {python_name: users, app_id: AXC53TQVJN4X2P4C, server: full, client: none,
+    table_mapping_name: null, table_mapping_id: null, table_id: 114436}
 renamed: true
