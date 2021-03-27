@@ -25,6 +25,7 @@ container:
       \ (blob.size) { // prevent empty blobs\n                    uploadBlob(blob);\n\
       \                }\n            });\n            startRecording.disabled = false;\n\
       \        }, 3000);\n\n    };\n      \n      \n      \n    </script>  "}
+  data_bindings: []
 components: []
 is_package: true
 custom_component: true
