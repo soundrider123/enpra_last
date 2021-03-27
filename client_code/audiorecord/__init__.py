@@ -1,5 +1,6 @@
 from ._anvil_designer import audiorecordTemplate
 from anvil import *
+import anvil.server
 
 class audiorecord(audiorecordTemplate):
   def __init__(self, **properties):
