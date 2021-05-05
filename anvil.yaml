@@ -5,14 +5,28 @@ services:
 - source: /runtime/services/google.yml
   client_config: {}
   server_config: {}
+startup: {type: form, module: MainForm}
 package_name: EnPra
 allow_embedding: false
 name: EnPra
 runtime_options: {version: 2, client_version: '3', server_version: python3-full}
 metadata: {}
-startup_form: MainForm2
 native_deps: {head_html: '<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>'}
 db_schema:
+- name: csvfile
+  id: 124475
+  python_name: csvfile
+  columns:
+    86aGv8u2j30=:
+      name: filename
+      type: string
+      admin_ui: {order: 0, width: 200}
+    kB9gCWzy00s=:
+      name: filemedia
+      type: media
+      admin_ui: {order: 1, width: 200}
+  access: {python_name: csvfile, app_id: AXC53TQVJN4X2P4C, server: full, client: none,
+    table_mapping_name: null, table_mapping_id: null, table_id: 124475}
 - name: Users
   id: 114436
   python_name: users

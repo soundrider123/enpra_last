@@ -6,6 +6,57 @@ from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime
 import requests
+from io import BytesIO
+import pandas as pd
+import os
+
+def checkfile(filename1):
+  file_exists = False
+  if os.path.isfile(f'/{filename1}.csv'):
+    file_exists = True
+    
+  if not file_exists:     
+    row = app_tables.csvfile.get(filename=filename1)
+    with open(f'/{filename1}.csv', 'w') as f:
+      bytes_io = BytesIO(row['filemedia'].get_bytes())
+      byte_str = bytes_io.read()
+      text_obj = byte_str.decode('UTF-8')
+      f.write(text_obj)
+
+@anvil.server.callable
+def loadtopic():
+  checkfile('dialog_topic')
+      
+  df = pd.read_csv('/dialog_topic.csv', delimiter='|')
+  df = df[['topic_id','topic_name']]
+  return df.to_dict(orient="records")
+
+@anvil.server.callable
+def loadtitle(topic_id):
+  checkfile('dialog_title')
+  checkfile('dialog_dialog')
+    
+  df = pd.read_csv('/dialog_title.csv', delimiter='|')
+  df_dialog = pd.read_csv('/dialog_dialog.csv', delimiter='|')
+  #print(df_dialog.shape)
+  #print(topic_id)
+  df_dialog['topic_id'] = df_dialog['topic_id'].astype(str)
+  df_titleids = df_dialog[df_dialog['topic_id'] == str(topic_id)]
+  #print(df_titleids.shape)
+  title_ids = pd.unique(df_titleids['title_id'])
+  #print(title_ids)
+  df = df.loc[df['title_id'].isin(title_ids)]
+  return df.to_dict(orient="records")
+
+@anvil.server.callable
+def loaddialog(title_id):
+  checkfile('dialog_dialog')
+    
+  df_dialog = pd.read_csv('/dialog_dialog.csv', delimiter='|')
+  df_dialog['title_id'] = df_dialog['title_id'].astype(str)
+  df_dialog = df_dialog[df_dialog['title_id'] == str(title_id)]
+  df = df_dialog[['dialog_line']]
+  return df.to_dict(orient="records")
 
 def get_newid():
   max_ids = app_tables.users.search(tables.order_by("userid", ascending=False))
