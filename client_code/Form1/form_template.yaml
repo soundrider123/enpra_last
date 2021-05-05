@@ -14,15 +14,29 @@ components:
     layout_properties: {width: 263}
     components:
     - type: RepeatingPanel
-      properties: {item_template: Form1.ItemTemplate4}
+      properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+        visible: true, spacing_above: small, spacing_below: small, item_template: Form1.ItemTemplate1,
+        background: ''}
       name: repeating_panel_1
       layout_properties: {width: 262}
   - type: FlowPanel
     properties: {}
     name: flow_panel_3
     layout_properties: {width: 260}
+    components:
+    - type: RepeatingPanel
+      properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+        visible: true, spacing_above: small, spacing_below: small, item_template: Form1.ItemTemplate2,
+        background: ''}
+      name: repeating_panel_2
+      layout_properties: {width: 255}
   - type: FlowPanel
     properties: {}
     name: flow_panel_4
     layout_properties: {width: 347}
+    components:
+    - type: RepeatingPanel
+      properties: {item_template: Form1.ItemTemplate6}
+      name: repeating_panel_3
+      layout_properties: {width: 336}
 is_package: true
