@@ -36,7 +36,9 @@ components:
     layout_properties: {width: 347}
     components:
     - type: RepeatingPanel
-      properties: {item_template: Form1.ItemTemplate6}
+      properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+        visible: true, spacing_above: small, spacing_below: small, item_template: Form1.ItemTemplate3,
+        background: ''}
       name: repeating_panel_3
       layout_properties: {width: 336}
 is_package: true
