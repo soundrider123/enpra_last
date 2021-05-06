@@ -13,17 +13,20 @@ components:
       visible: true, spacing_above: small, spacing_below: small, item_template: Form1.ItemTemplate1,
       background: ''}
     name: repeating_panel_1
-    layout_properties: {width: 237}
+    layout_properties: {width: 219}
   - type: RepeatingPanel
     properties: {item_template: Form1.ItemTemplate2}
     name: repeating_panel_2
-    layout_properties: {width: 223}
+    layout_properties: {width: 211}
   - type: RepeatingPanel
     properties: {item_template: Form1.ItemTemplate3}
     name: repeating_panel_3
-    layout_properties: {width: 225}
+    layout_properties: {width: 208}
   - type: TextArea
-    properties: {height: 483.875}
+    properties: {role: null, align: left, height: 467.875, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      auto_expand: false, font: '', spacing_above: small, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
     name: text_area_1
-    layout_properties: {width: 387.639}
+    layout_properties: {width: 334.639}
 is_package: true

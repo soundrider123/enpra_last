@@ -16,25 +16,26 @@ class Form1(Form1Template):
   def init(self, topic_id):
     dic1 = anvil.server.call("loadtitle", topic_id, '1')
     self.repeating_panel_1.items = dic1   
+    Globals.dic1 = dic1
 
     dic2 = anvil.server.call("loadtitle", topic_id, '2')
-    self.repeating_panel_2.items = dic2   
+    self.repeating_panel_2.items = dic2
+    Globals.dic2 = dic2
 
     dic3 = anvil.server.call("loadtitle", topic_id, '3')
-    self.repeating_panel_3.items = dic3   
+    self.repeating_panel_3.items = dic3
+    Globals.dic3 = dic3
     
-    dlg_line = anvil.server.call("loaddialog_first", topic_id)
+    title_id, title_name = anvil.server.call("get_title", topic_id)
+    dlg_line = anvil.server.call("loaddialog", title_id)
     self.text_area_1.text = dlg_line
     
-  def init_bytitle(self, title_id):
-    dic1 = anvil.server.call("loadtitle", Globals.topic_id, '1')
-    self.repeating_panel_1.items = dic1   
-
-    dic2 = anvil.server.call("loadtitle", Globals.topic_id, '2')
-    self.repeating_panel_2.items = dic2   
-
-    dic3 = anvil.server.call("loadtitle", Globals.topic_id, '3')
-    self.repeating_panel_3.items = dic3   
+    return title_id, title_name
+    
+  def init_bytitle(self, title_id): 
+    self.repeating_panel_1.items = Globals.dic1
+    self.repeating_panel_2.items = Globals.dic2
+    self.repeating_panel_3.items = Globals.dic3
     
     dlg_line = anvil.server.call("loaddialog", title_id)
     self.text_area_1.text = dlg_line    

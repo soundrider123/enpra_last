@@ -17,5 +17,5 @@ class ItemTemplate3(ItemTemplate3Template):
 
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
-    Globals.mainform.change_content_bytitle(self.item['title_id'])
+    Globals.mainform.change_content_bytitle(self.item['title_name'], self.item['title_id'])
 
