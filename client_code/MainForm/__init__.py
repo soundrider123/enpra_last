@@ -18,4 +18,6 @@ class MainForm(MainFormTemplate):
     dic1 = anvil.server.call("loadtopic")
     self.repeating_panel_1.items = dic1  
 
-
+    form1_instance = Form1(param='an_argument')
+    self.flow_panel_1.clear()
+    self.flow_panel_1.add_component(form1_instance)
