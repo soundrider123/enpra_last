@@ -8,5 +8,5 @@ components:
   layout_properties: {grid_position: 'FHNUAJ,QLSYXD'}
   data_bindings:
   - {property: text, code: 'self.item[''topic_name'']'}
-  - {property: tag, code: 'self.item[''topic_id'']'}
+  event_bindings: {click: link_1_click}
 is_package: true

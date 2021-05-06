@@ -8,6 +8,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from EnPra.Form1 import Form1
 from EnPra.Form2 import Form2
+from EnPra import Globals
 
 class MainForm(MainFormTemplate):
   def __init__(self, **properties):
@@ -16,7 +17,8 @@ class MainForm(MainFormTemplate):
 
     # Any code you write here will run when the form opens.
     dic1 = anvil.server.call("loadtopic")
-    self.repeating_panel_1.items = dic1  
+    self.repeating_panel_1.items = dic1
+    Globals.mainform = self
 
   def change_content(self, topic_id):
     form1_instance = Form1(param='an_argument')

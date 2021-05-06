@@ -13,9 +13,9 @@ class Form1(Form1Template):
     self.init_components(**properties)
     
   def init(self, topic_id):
-    dic2 = anvil.server.call("loadtitle", topic_id)
-    self.repeating_panel_2.items = dic2   
+    dic1 = anvil.server.call("loadtitle", topic_id)
+    self.repeating_panel_1.items = dic1   
     
-    dic3 = anvil.server.call("loaddialog_first", topic_id)
-    self.repeating_panel_3.items = dic3
+    dlg_line = anvil.server.call("loaddialog_first", topic_id)
+    self.text_area_1.text = dlg_line
     

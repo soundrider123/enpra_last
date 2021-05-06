@@ -60,7 +60,8 @@ def loaddialog_first(topic_id):
   df_dialog['title_id'] = df_dialog['title_id'].astype(str)
   df_dialog = df_dialog[df_dialog['title_id'] == str(title_id)]
   df = df_dialog[['dialog_line']]
-  return df.to_dict(orient="records")
+  
+  return '\n'.join(df['dialog_line'].values)
 
 @anvil.server.callable
 def loaddialog(title_id):
