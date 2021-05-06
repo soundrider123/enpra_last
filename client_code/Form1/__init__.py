@@ -12,13 +12,10 @@ class Form1(Form1Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     
-
-    # Any code you write here will run when the form opens.
-    dic1 = anvil.server.call("loadtopic")
-    self.repeating_panel_1.items = dic1    
-    
-    dic2 = anvil.server.call("loadtitle", '1')
+  def init(self, topic_id):
+    dic2 = anvil.server.call("loadtitle", topic_id)
     self.repeating_panel_2.items = dic2   
     
-    dic3 = anvil.server.call("loaddialog", '1')
-    self.repeating_panel_3.items = dic3       
+    dic3 = anvil.server.call("loaddialog_first", topic_id)
+    self.repeating_panel_3.items = dic3
+    

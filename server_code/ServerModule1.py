@@ -49,6 +49,20 @@ def loadtitle(topic_id):
   return df.to_dict(orient="records")
 
 @anvil.server.callable
+def loaddialog_first(topic_id):
+  checkfile('dialog_dialog')
+  
+  df_dialog = pd.read_csv('/dialog_dialog.csv', delimiter='|')
+  df_dialog['topic_id'] = df_dialog['topic_id'].astype(str)
+  df_dialog = df_dialog[df_dialog['topic_id'] == str(topic_id)]
+  title_id = df_dialog['title_id'].min()
+  
+  df_dialog['title_id'] = df_dialog['title_id'].astype(str)
+  df_dialog = df_dialog[df_dialog['title_id'] == str(title_id)]
+  df = df_dialog[['dialog_line']]
+  return df.to_dict(orient="records")
+
+@anvil.server.callable
 def loaddialog(title_id):
   checkfile('dialog_dialog')
     
