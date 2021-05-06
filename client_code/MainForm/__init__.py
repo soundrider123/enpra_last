@@ -23,6 +23,14 @@ class MainForm(MainFormTemplate):
   def change_content(self, topic_id):
     form1_instance = Form1(param='an_argument')
     form1_instance.init(topic_id)
+    Globals.topic_id = topic_id 
     self.flow_panel_1.clear()
     self.flow_panel_1.add_component(form1_instance)
+    
+  def change_content_bytitle(self, title_id):
+    form1_instance = Form1(param='an_argument')
+    form1_instance.init_bytitle(title_id)
+    self.flow_panel_1.clear()
+    self.flow_panel_1.add_component(form1_instance)
+    
     

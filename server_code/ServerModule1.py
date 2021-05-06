@@ -10,6 +10,7 @@ from io import BytesIO
 import pandas as pd
 import os
 
+
 def checkfile(filename1):
   file_exists = False
   if os.path.isfile(f'/{filename1}.csv'):
@@ -22,29 +23,36 @@ def checkfile(filename1):
       byte_str = bytes_io.read()
       text_obj = byte_str.decode('UTF-8')
       f.write(text_obj)
+      
 
+  if filename1 == 'dialog_dialog':
+    if df_dialog is None:
+      
+      df_dialog['title_id'] = df_dialog['title_id'].astype(str)
+      df_dialog['topic_id'] = df_dialog['topic_id'].astype(str)
+
+ 
 @anvil.server.callable
 def loadtopic():
+  
   checkfile('dialog_topic')
-      
-  df = pd.read_csv('/dialog_topic.csv', delimiter='|')
-  df = df[['topic_id','topic_name']]
+  df_topic = pd.read_csv('/dialog_topic.csv', delimiter='|')
+  df = df_topic[['topic_id','topic_name']]
   return df.to_dict(orient="records")
 
 @anvil.server.callable
 def loadtitle(topic_id, rpt_number):
+ 
   checkfile('dialog_title')
   checkfile('dialog_dialog')
     
   df = pd.read_csv('/dialog_title.csv', delimiter='|')
-  df_dialog = pd.read_csv('/dialog_dialog.csv', delimiter='|')
-  #print(df_dialog.shape)
-  #print(topic_id)
-  df_dialog['topic_id'] = df_dialog['topic_id'].astype(str)
-  df_titleids = df_dialog[df_dialog['topic_id'] == str(topic_id)]
-  #print(df_titleids.shape)
+  df_dialog1 = pd.read_csv('/dialog_dialog.csv', delimiter='|')
+  
+  df_titleids = df_dialog1[df_dialog1['topic_id'] == str(topic_id)]
+  
   title_ids = pd.unique(df_titleids['title_id'])
-  #print(title_ids)
+  
   df = df.loc[df['title_id'].isin(title_ids)]
   
   if rpt_number == '1':
@@ -65,28 +73,30 @@ def loadtitle(topic_id, rpt_number):
 
 @anvil.server.callable
 def loaddialog_first(topic_id):
+  
   checkfile('dialog_dialog')
   
-  df_dialog = pd.read_csv('/dialog_dialog.csv', delimiter='|')
-  df_dialog['topic_id'] = df_dialog['topic_id'].astype(str)
-  df_dialog = df_dialog[df_dialog['topic_id'] == str(topic_id)]
-  title_id = df_dialog['title_id'].min()
+  df = pd.read_csv('/dialog_dialog.csv', delimiter='|')
   
-  df_dialog['title_id'] = df_dialog['title_id'].astype(str)
-  df_dialog = df_dialog[df_dialog['title_id'] == str(title_id)]
-  df = df_dialog[['dialog_line']]
+  df = df[df['topic_id'] == str(topic_id)]
+  title_id = df['title_id'].min()
+  
+  
+  df = df[df['title_id'] == str(title_id)]
+  df = df[['dialog_line']]
   
   return '\n'.join(df['dialog_line'].values)
 
 @anvil.server.callable
 def loaddialog(title_id):
+  
   checkfile('dialog_dialog')
     
-  df_dialog = pd.read_csv('/dialog_dialog.csv', delimiter='|')
-  df_dialog['title_id'] = df_dialog['title_id'].astype(str)
-  df_dialog = df_dialog[df_dialog['title_id'] == str(title_id)]
-  df = df_dialog[['dialog_line']]
-  return df.to_dict(orient="records")
+  df = pd.read_csv('/dialog_dialog.csv', delimiter='|')
+  
+  df = df[df['title_id'] == str(title_id)]
+  df = df[['dialog_line']]
+  return '\n'.join(df['dialog_line'].values)
 
 def get_newid():
   max_ids = app_tables.users.search(tables.order_by("userid", ascending=False))
