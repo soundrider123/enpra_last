@@ -8,19 +8,22 @@ components:
   name: flow_panel_1
   layout_properties: {grid_position: 'DUFZTK,TYGBZS', full_width_row: true}
   components:
-  - type: FlowPanel
-    properties: {}
-    name: flow_panel_2
-    layout_properties: {width: 263}
-    components:
-    - type: RepeatingPanel
-      properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
-        visible: true, spacing_above: small, spacing_below: small, item_template: Form1.ItemTemplate1,
-        background: ''}
-      name: repeating_panel_1
-      layout_properties: {width: 262}
+  - type: RepeatingPanel
+    properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+      visible: true, spacing_above: small, spacing_below: small, item_template: Form1.ItemTemplate1,
+      background: ''}
+    name: repeating_panel_1
+    layout_properties: {width: 237}
+  - type: RepeatingPanel
+    properties: {item_template: Form1.ItemTemplate2}
+    name: repeating_panel_2
+    layout_properties: {width: 223}
+  - type: RepeatingPanel
+    properties: {item_template: Form1.ItemTemplate3}
+    name: repeating_panel_3
+    layout_properties: {width: 225}
   - type: TextArea
     properties: {height: 483.875}
     name: text_area_1
-    layout_properties: {width: 393.639}
+    layout_properties: {width: 387.639}
 is_package: true
