@@ -1,3 +1,74 @@
-container: {type: ColumnPanel}
-components: []
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+components:
+- type: XYPanel
+  properties: {height: 468}
+  name: xy_panel_1
+  layout_properties: {grid_position: 'HFHYZH,CLILTG'}
+  components:
+  - type: RepeatingPanel
+    properties: {role: conversation-panel, tooltip: '', border: '', foreground: '',
+      items: null, visible: true, spacing_above: small, spacing_below: small, item_template: Form2.ItemTemplate5,
+      background: ''}
+    name: repeating_panel_1
+    layout_properties: {x: 10, y: 10.000000953674316, width: 329.77478}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Answering line of B person:', font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: label_1
+    layout_properties: {x: 380.16668701171875, y: 36.996527671813965, width: 240.99}
+  - type: TextBox
+    properties: {}
+    name: text_box_line
+    layout_properties: {x: 380.1562805175781, y: 98.00347423553467, width: 261}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Inverse accuracy:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {x: 380.1562805175781, y: 184.01042461395264, width: 135.99}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '
+
+        ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:volume-up'}
+    name: button_voice
+    layout_properties: {x: 644.9931030273438, y: 105.41667461395264, width: 40.9896}
+    event_bindings: {click: button_voice_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: answer, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:microphone'}
+    name: button_answer
+    layout_properties: {x: 443.1770935058594, y: 320.00000286102295, width: 128.976}
+    event_bindings: {click: button_answer_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: MATCHING EXERCISE, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:forward'}
+    name: button_match
+    layout_properties: {x: 391.1458435058594, y: 405.13891887664795, width: 250}
+    event_bindings: {click: button_match_click}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Line left:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties: {x: 380.1562805175781, y: 228.85417461395264, width: 110}
+  - type: Label
+    properties: {}
+    name: label_accuracy
+    layout_properties: {x: 506.138916015625, y: 183.99307461395267, width: 90.9896}
+  - type: Label
+    properties: {}
+    name: label_left
+    layout_properties: {x: 506.1285095214844, y: 228.8541601119995, width: 115.01777099609376}
 is_package: true
