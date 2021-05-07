@@ -8,6 +8,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from EnPra.Form1 import Form1
 from EnPra.Form2 import Form2
+from EnPra.Form3 import Form3
 from EnPra import Globals
 from EnPra.ProfileForm import ProfileForm
 from EnPra.HowtoForm import HowtoForm
@@ -35,11 +36,9 @@ class MainForm(MainFormTemplate):
     """This method is called when the link is clicked"""
     print('clicked')
     title_id = self.link_1.tag
-    form2_instance = Form2(param='an_argument')
-    form2_instance.init(title_id)
-    Globals.title_id = title_id 
+    frm = Form3(param='an_argument')
     self.flow_panel_1.clear()
-    self.flow_panel_1.add_component(form2_instance)
+    self.flow_panel_1.add_component(frm)
     
 
   def button_1_click(self, **event_args):
