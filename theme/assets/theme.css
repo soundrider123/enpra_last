@@ -139,6 +139,12 @@ a:hover, a:active {
   overflow-x: hidden; /* ew, but I'm not debugging CSS for the next hour */
   height: 450px;
 }
+.anvil-role-topic-panel {
+  border: 1px solid #888;
+  overflow-y: scroll;
+  overflow-x: hidden; /* ew, but I'm not debugging CSS for the next hour */
+  height: 400px;
+}
 
 /* Page structure: App bar with optional left nav */
 .structure {

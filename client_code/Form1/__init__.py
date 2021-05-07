@@ -12,31 +12,29 @@ class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+
+    dic1 = anvil.server.call("loadtopic")
+    self.repeating_panel_1.items = dic1
     
-  def init(self, topic_id):
-    dic1 = anvil.server.call("loadtitle", topic_id, '1')
-    self.repeating_panel_1.items = dic1   
-    Globals.dic1 = dic1
-
-    dic2 = anvil.server.call("loadtitle", topic_id, '2')
+    self.change_topic('1')
+    
+    self.text_area_1.width = "400px"
+    
+  def change_topic(self, topic_id):
+    dic2 = anvil.server.call("loadtitle", topic_id)
     self.repeating_panel_2.items = dic2
-    Globals.dic2 = dic2
-
-    dic3 = anvil.server.call("loadtitle", topic_id, '3')
-    self.repeating_panel_3.items = dic3
-    Globals.dic3 = dic3
     
     title_id, title_name = anvil.server.call("get_title", topic_id)
     dlg_line = anvil.server.call("loaddialog", title_id)
     self.text_area_1.text = dlg_line
     
-    return title_id, title_name
+    Globals.mainform.link_1.text =title_name+ '  [ Эхлэх ] '
+    Globals.mainform.link_1.tag = title_id
     
-  def init_bytitle(self, title_id): 
-    self.repeating_panel_1.items = Globals.dic1
-    self.repeating_panel_2.items = Globals.dic2
-    self.repeating_panel_3.items = Globals.dic3
-    
+  def change_title(self, title_name, title_id):     
     dlg_line = anvil.server.call("loaddialog", title_id)
     self.text_area_1.text = dlg_line    
+
+    Globals.mainform.link_1.text =title_name+ '  [ Эхлэх ] '
+    Globals.mainform.link_1.tag = title_id
     

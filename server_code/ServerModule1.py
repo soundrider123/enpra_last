@@ -33,7 +33,7 @@ def loadtopic():
   return df.to_dict(orient="records")
 
 @anvil.server.callable
-def loadtitle(topic_id, rpt_number):
+def loadtitle(topic_id):
  
   checkfile('dialog_title')
   checkfile('dialog_dialog')
@@ -45,21 +45,7 @@ def loadtitle(topic_id, rpt_number):
   
   title_ids = pd.unique(df_titleids['title_id'])
   
-  df = df.loc[df['title_id'].isin(title_ids)]
-  
-  if rpt_number == '1':
-    df = df[:10]
-  if rpt_number == '2':
-    if df.shape[0] > 10:
-      df = df[10:20]
-    else:
-      df = df.head(0)
-  if rpt_number == '3':
-    if df.shape[0] > 20:
-      df = df[20:]
-    else:
-      df = df.head(0)
-    
+  df = df.loc[df['title_id'].isin(title_ids)]    
     
   return df.to_dict(orient="records")
 

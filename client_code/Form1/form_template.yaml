@@ -2,31 +2,46 @@ container:
   type: ColumnPanel
   properties: {col_widths: '{}'}
 components:
-- type: FlowPanel
-  properties: {role: null, spacing: tiny, align: left, tooltip: '', border: '', foreground: '',
-    visible: true, spacing_above: small, spacing_below: small, background: ''}
-  name: flow_panel_1
-  layout_properties: {grid_position: 'DUFZTK,TYGBZS', full_width_row: true}
+- type: XYPanel
+  properties: {height: 489, width: 1120}
+  name: xy_panel_1
+  layout_properties: {grid_position: 'MVSABS,UFGKVX'}
   components:
   - type: RepeatingPanel
-    properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+    properties: {role: topic-panel, tooltip: '', border: '', foreground: '', items: null,
       visible: true, spacing_above: small, spacing_below: small, item_template: Form1.ItemTemplate1,
       background: ''}
     name: repeating_panel_1
-    layout_properties: {width: 219}
-  - type: RepeatingPanel
-    properties: {item_template: Form1.ItemTemplate2}
-    name: repeating_panel_2
-    layout_properties: {width: 211}
-  - type: RepeatingPanel
-    properties: {item_template: Form1.ItemTemplate3}
-    name: repeating_panel_3
-    layout_properties: {width: 208}
+    layout_properties: {x: 10, y: 61.510416984558105, width: 223.15274426269536}
   - type: TextArea
-    properties: {role: null, align: left, height: 467.875, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      auto_expand: false, font: '', spacing_above: small, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
+    properties: {height: 400.875}
     name: text_area_1
-    layout_properties: {width: 334.639}
+    layout_properties: {x: 483.0868377685547, y: 60.642367362976074, width: 250.99}
+  - type: RepeatingPanel
+    properties: {role: topic-panel, tooltip: '', border: '', foreground: '', items: null,
+      visible: true, spacing_above: small, spacing_below: small, item_template: Form1.ItemTemplate2,
+      background: ''}
+    name: repeating_panel_2
+    layout_properties: {x: 243.142, y: 61.510416984558105, width: 220.938}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Talk - яриа, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_3
+    layout_properties: {x: 483.0729217529297, y: 15.781250953674316, width: 160}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Sub topic - дэд сэдэв, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {x: 243.142, y: 16.649306297302246, width: 160}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Topic - сэдэв, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties: {x: 10, y: 15.781250953674316, width: 160}
 is_package: true
