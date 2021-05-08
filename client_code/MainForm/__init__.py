@@ -37,6 +37,7 @@ class MainForm(MainFormTemplate):
     #print('clicked')
     title_id = self.link_1.tag
     frm = Form2(param='an_argument')
+    frm.init(title_id)
     self.flow_panel_1.clear()
     frm.xy_panel_1.remove_from_parent()
     self.flow_panel_1.add_component(frm.xy_panel_1)

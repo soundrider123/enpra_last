@@ -77,6 +77,17 @@ def loaddialog(title_id):
   df = df[['dialog_line']]
   return '\n'.join(df['dialog_line'].values)
 
+@anvil.server.callable
+def loadtalk(title_id):
+  
+  checkfile('dialog_dialog')
+    
+  df = pd.read_csv('/dialog_dialog.csv', delimiter='|')
+  df['title_id'] = df['title_id'].astype(str)
+  df = df[df['title_id'] == str(title_id)]
+  df = df[['dialog_id', 'dialog_line']]
+  return df.to_dict(orient="records")
+
 def get_newid():
   max_ids = app_tables.users.search(tables.order_by("userid", ascending=False))
   max_id = 0

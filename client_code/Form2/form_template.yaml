@@ -24,13 +24,6 @@ components:
     properties: {}
     name: text_box_line
     layout_properties: {x: 380.1562805175781, y: 98.00347423553467, width: 261}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Inverse accuracy:', font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_2
-    layout_properties: {x: 380.1562805175781, y: 184.01042461395264, width: 135.99}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: '
@@ -58,17 +51,24 @@ components:
     event_bindings: {click: button_match_click}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Line left:', font_size: null, font: '', spacing_above: small,
+      visible: true, text: 'Answer line left:', font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_4
-    layout_properties: {x: 380.1562805175781, y: 228.85417461395264, width: 110}
+    layout_properties: {x: 380.1562805175781, y: 172.8472318649292, width: 110}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Inverse accuracy:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {x: 380.1562805175781, y: 226.82986736297607, width: 123}
   - type: Label
     properties: {}
     name: label_accuracy
-    layout_properties: {x: 506.138916015625, y: 183.99307461395267, width: 90.9896}
+    layout_properties: {x: 513.1562805175781, y: 226.82292461395264, width: 90}
   - type: Label
     properties: {}
     name: label_left
-    layout_properties: {x: 506.1285095214844, y: 228.8541601119995, width: 115.01777099609376}
+    layout_properties: {x: 513.1562805175781, y: 172.8472318649292, width: 113}
 is_package: true

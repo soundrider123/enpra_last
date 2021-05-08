@@ -6,4 +6,6 @@ components:
   properties: {}
   name: label_1
   layout_properties: {grid_position: 'GJFPBH,FATAMN'}
+  data_bindings:
+  - {property: text, code: 'self.item[''dialog_line'']'}
 is_package: true

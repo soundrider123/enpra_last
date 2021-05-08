@@ -9,8 +9,9 @@ from anvil.tables import app_tables
 
 class Form2(Form2Template):
   def __init__(self, **properties):
-    self.last_event = None
-    self.events = []
+    self.last_line = None
+    self.lines = []
+    self.cur_pos = 0
     
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -20,8 +21,15 @@ class Form2(Form2Template):
 
     
   def init(self, title_id):
-    pass
-
+    dlg_line = anvil.server.call('loadtalk', title_id)
+    self.dlg_lines = dlg_line
+    left_line = int(len(self.dlg_lines) / 2)
+    self.label_left.text = str(left_line)
+    self.text_box_line.text = self.dlg_lines[self.cur_pos+1]['dialog_line']
+    cur_line = {'dialog_line': self.dlg_lines[self.cur_pos]['dialog_line']}
+    self.lines.append(cur_line)
+    self.repeating_panel_1.items = self.lines
+    
   def button_match_click(self, **event_args):
     """This method is called when the button is clicked"""
     pass
