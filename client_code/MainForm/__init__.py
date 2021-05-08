@@ -32,13 +32,22 @@ class MainForm(MainFormTemplate):
     howto_instance = HowtoForm(param='an_argument')
     self.button_3.tag = howto_instance   
     
+    self.timer_1.interval = 0
+    anvil.google.auth.login()
+    self.userid = anvil.server.call('get_userid')
+    
+    form2_instance = Form2(param='an_argument')
+    form2_instance.init_form(self.userid)
+    Globals.form2 = form2_instance
+    
+    self.prev = False    
 
     
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
     #print('clicked')
     title_id = self.link_1.tag
-    frm = Form2(param='an_argument')
+    
     frm.init(title_id)
     self.flow_panel_1.clear()
     frm.xy_panel_1.remove_from_parent()
@@ -71,6 +80,17 @@ class MainForm(MainFormTemplate):
     self.flow_panel_1.clear()
     self.flow_panel_1.add_component(form3)    
     pass
+
+  def timer_1_tick(self, **event_args):
+    """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
+    isrecording = anvil.js.call_js('get_startrecording_disabled') 
+    #print(isrecording)
+    if (self.prev == True and isrecording == False):
+      transcription = anvil.server.call('get_transcription', self.userid)
+      self.label_2.text = transcription
+    
+    self.prev = isrecording
+
 
 
 

@@ -13,34 +13,10 @@ components:
       background: ''}
     name: repeating_panel_1
     layout_properties: {x: 10, y: 10.000000953674316, width: 329.77478}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Answering line of B person:', font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: label_1
-    layout_properties: {x: 380.16668701171875, y: 36.996527671813965, width: 240.99}
   - type: TextBox
     properties: {}
     name: text_box_line
     layout_properties: {x: 380.1562805175781, y: 98.00347423553467, width: 261}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: '
-
-        ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: 'fa:volume-up'}
-    name: button_voice
-    layout_properties: {x: 644.9931030273438, y: 105.41667461395264, width: 40.9896}
-    event_bindings: {click: button_voice_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: answer, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: 'fa:microphone'}
-    name: button_answer
-    layout_properties: {x: 443.1770935058594, y: 320.00000286102295, width: 128.976}
-    event_bindings: {click: button_answer_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: MATCHING EXERCISE, font_size: null, font: '',
@@ -78,4 +54,39 @@ components:
       underline: false, icon: ''}
     name: label_3
     layout_properties: {x: 380.1562805175781, y: 258.0034818649292, width: 160}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Answering line of B person:', font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: label_1
+    layout_properties: {x: 380.1562805175781, y: 61.41667461395264, width: 241}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Person A is asking question:', font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: label_5
+    layout_properties: {x: 380.1562805175781, y: 23.003472328186035, width: 202}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:volume-up'}
+    name: button_question
+    layout_properties: {x: 592.1354370117188, y: 23.003472328186035, width: 49}
+    event_bindings: {click: button_question_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '
+
+        ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:volume-up'}
+    name: button_voice
+    layout_properties: {x: 644.982666015625, y: 98.00347423553467, width: 41}
+    event_bindings: {click: button_voice_click}
+  - type: form:audiorecord
+    properties: {}
+    name: audiorecord_1
+    layout_properties: {x: 432.1319580078125, y: 338.00000286102295, width: 164}
 is_package: true
