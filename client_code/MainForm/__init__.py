@@ -34,11 +34,12 @@ class MainForm(MainFormTemplate):
     
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
-    print('clicked')
+    #print('clicked')
     title_id = self.link_1.tag
-    frm = Form3(param='an_argument')
+    frm = Form2(param='an_argument')
     self.flow_panel_1.clear()
-    self.flow_panel_1.add_component(frm)
+    frm.xy_panel_1.remove_from_parent()
+    self.flow_panel_1.add_component(frm.xy_panel_1)
     
 
   def button_1_click(self, **event_args):
