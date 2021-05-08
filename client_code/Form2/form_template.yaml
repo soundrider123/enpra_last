@@ -71,4 +71,11 @@ components:
     properties: {}
     name: label_left
     layout_properties: {x: 513.1562805175781, y: 172.8472318649292, width: 113}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: (less is better), font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_3
+    layout_properties: {x: 380.1562805175781, y: 258.0034818649292, width: 160}
 is_package: true
