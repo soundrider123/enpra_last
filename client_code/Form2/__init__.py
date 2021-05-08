@@ -12,6 +12,7 @@ class Form2(Form2Template):
     self.last_line = None
     self.lines = []
     self.cur_pos = 0
+    self.dialog_id = 0
     
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -27,6 +28,7 @@ class Form2(Form2Template):
     self.label_left.text = str(left_line)
     self.text_box_line.text = self.dlg_lines[self.cur_pos+1]['dialog_line']
     cur_line = {'dialog_line': self.dlg_lines[self.cur_pos]['dialog_line']}
+    self.dialog_id = self.dlg_lines[self.cur_pos]['dialog_id']
     self.lines.append(cur_line)
     self.repeating_panel_1.items = self.lines
     
@@ -40,7 +42,8 @@ class Form2(Form2Template):
 
   def button_voice_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
+    url1 = f'https://43.231.114.140:8080/audioplay?audioid={self.dialog_id}' 
+    self.call_js('PlaySound', url1)
 
 
 
