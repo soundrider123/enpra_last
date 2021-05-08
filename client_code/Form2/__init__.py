@@ -6,6 +6,7 @@ from anvil.google.drive import app_files
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from EnPra import Globals
 
 class Form2(Form2Template):
   def __init__(self, **properties):
@@ -43,7 +44,7 @@ class Form2(Form2Template):
   def button_voice_click(self, **event_args):
     """This method is called when the button is clicked"""
     url1 = f'https://43.231.114.140:8080/audioplay?audioid={self.dialog_id}' 
-    self.call_js('PlaySound', url1)
+    Globals.mainform.call_js('PlaySound', url1)
 
 
 

@@ -32,12 +32,7 @@ class MainForm(MainFormTemplate):
     howto_instance = HowtoForm(param='an_argument')
     self.button_3.tag = howto_instance   
     
-    self.html = """<script>
-function PlaySound(url) {
-  		  var audio = new Audio(url);
-		  audio.play();
-      } 
-</script>"""
+
     
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
