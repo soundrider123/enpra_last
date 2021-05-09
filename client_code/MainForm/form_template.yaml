@@ -54,6 +54,6 @@ components:
   name: flow_panel_1
   layout_properties: {slot: default}
 - type: Timer
-  properties: {interval: 0}
+  properties: {interval: 0.5}
   name: timer_1
   event_bindings: {tick: timer_1_tick}

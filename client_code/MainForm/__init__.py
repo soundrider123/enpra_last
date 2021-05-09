@@ -31,8 +31,7 @@ class MainForm(MainFormTemplate):
 
     howto_instance = HowtoForm(param='an_argument')
     self.button_3.tag = howto_instance   
-    
-    self.timer_1.interval = 0
+       
     anvil.google.auth.login()
     self.userid = anvil.server.call('get_userid')
     
@@ -86,8 +85,7 @@ class MainForm(MainFormTemplate):
     isrecording = anvil.js.call_js('get_startrecording_disabled') 
     #print(isrecording)
     if (self.prev == True and isrecording == False):
-      transcription = anvil.server.call('get_transcription', self.userid)
-      self.label_2.text = transcription
+      Globals.form2.record_answer_clicked()
     
     self.prev = isrecording
 

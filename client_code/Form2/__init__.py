@@ -50,6 +50,13 @@ class Form2(Form2Template):
     """This method is called when the button is clicked"""
     url1 = f'https://43.231.114.140:8080/getaudio/{self.dialog_id_a}' 
     Globals.mainform.call_js('PlaySound', url1)
+    
+  def record_answer_clicked(self):
+      accuracy = anvil.server.call('get_accuracy', self.userid)
+      self.label_accuracy.text = str(accuracy) 
+      self.lines.append({'dialog_line': self.dlg_lines[self.cur_pos+1]['dialog_line']})
+      self.lines.append({'dialog_line': self.dlg_lines[self.cur_pos+2]['dialog_line']})
+      self.cur_pos = self.cur_pos + 2
 
 
 
