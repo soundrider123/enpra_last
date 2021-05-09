@@ -137,7 +137,7 @@ a:hover, a:active {
   border: 1px solid #888;
   overflow-y: scroll;
   overflow-x: hidden; /* ew, but I'm not debugging CSS for the next hour */
-  height: 450px;
+  height: 400px;
 }
 .anvil-role-topic-panel {
   border: 1px solid #888;

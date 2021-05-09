@@ -85,17 +85,7 @@ class MainForm(MainFormTemplate):
       self.prev = isrecording
       
 
-  def button_start_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    title_id = self.button_start.tag
-    
-    Globals.form2.init(title_id)
-    self.flow_panel_1.clear()
-    Globals.form2.xy_panel_1.remove_from_parent()
-    self.flow_panel_1.add_component(Globals.form2.xy_panel_1)
-    self.check_recording = True
-    
-    Globals.form2.question_voice()
+
 
 
 

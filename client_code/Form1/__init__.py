@@ -28,13 +28,27 @@ class Form1(Form1Template):
     dlg_line = anvil.server.call("loaddialog", title_id)
     self.text_area_1.text = dlg_line
     
-    Globals.mainform.label_1.text =title_name
-    Globals.mainform.button_start.tag = title_id
+    self.label_title.text =title_name
+    self.button_start.tag = title_id
     
   def change_title(self, title_name, title_id):     
     dlg_line = anvil.server.call("loaddialog", title_id)
     self.text_area_1.text = dlg_line    
 
-    Globals.mainform.label_1.text =title_name
-    Globals.mainform.button_start.tag = title_id
+    self.label_title.text =title_name
+    self.button_start.tag = title_id
     
+
+  def button_start_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    title_id = self.button_start.tag
+    
+    Globals.form2.init(title_id)
+    Globals.form2.label_title.text = self.label_title.text
+    Globals.mainform.flow_panel_1.clear()
+    Globals.form2.xy_panel_1.remove_from_parent()
+    Globals.mainform.flow_panel_1.add_component(Globals.form2.xy_panel_1)
+    Globals.mainform.check_recording = True
+    
+    Globals.form2.question_voice()
+

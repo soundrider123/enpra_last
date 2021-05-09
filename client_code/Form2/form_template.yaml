@@ -5,48 +5,48 @@ components:
 - type: XYPanel
   properties: {height: 479.1111068725586}
   name: xy_panel_1
-  layout_properties: {grid_position: 'LNHUHS,IFBSNE'}
+  layout_properties: {grid_position: 'LNHUHS,ATCBFE'}
   components:
+  - type: TextBox
+    properties: {}
+    name: text_box_line
+    layout_properties: {x: 14.11447900390624, y: 412.9930753707886, width: 360}
+  - type: Label
+    properties: {}
+    name: label_accuracy
+    layout_properties: {x: 586.1284790039062, y: 208.97917461395264, width: 90}
+  - type: Label
+    properties: {}
+    name: label_left
+    layout_properties: {x: 581.1284790039062, y: 157.11807461395264, width: 112.986}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Answer line left:', font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_4
-    layout_properties: {x: 26.145843505859375, y: 152.8472318649292, width: 110}
-  - type: Label
-    properties: {}
-    name: label_left
-    layout_properties: {x: 161.1423797607422, y: 152.8472318649292, width: 113}
+    layout_properties: {x: 446.1458339691162, y: 157.11807461395264, width: 110}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Inverse accuracy:', font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_2
-    layout_properties: {x: 26.145843505859375, y: 201.98611736297607, width: 123}
-  - type: Label
-    properties: {}
-    name: label_accuracy
-    layout_properties: {x: 161.1423797607422, y: 201.98611736297607, width: 90}
+    layout_properties: {x: 446.1458339691162, y: 208.97917461395264, width: 122.986}
+  - type: RepeatingPanel
+    properties: {role: conversation-panel, tooltip: '', border: '', foreground: '',
+      items: null, visible: true, spacing_above: small, spacing_below: small, item_template: Form2.ItemTemplate5,
+      background: ''}
+    name: repeating_panel_1
+    layout_properties: {x: 14.097223281860352, y: 10, width: 402.1182557220459, grid_position: 'SAIVTI,YUTONH'}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: MATCHING EXERCISE, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: 'fa:forward'}
     name: button_match
-    layout_properties: {x: 49.14585876464844, y: 377.13891887664795, width: 250}
+    layout_properties: {x: 426.12847900390625, y: 413.4201173629761, width: 250}
     event_bindings: {click: button_match_click}
-  - type: RepeatingPanel
-    properties: {role: conversation-panel, tooltip: '', border: '', foreground: '',
-      items: null, visible: true, spacing_above: small, spacing_below: small, item_template: Form2.ItemTemplate5,
-      background: ''}
-    name: repeating_panel_1
-    layout_properties: {x: 383.9930877685547, y: 10, width: 330}
-  - type: TextBox
-    properties: {}
-    name: text_box_line
-    layout_properties: {x: 14.12847900390625, y: 299.00000286102295, width: 260}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: '
@@ -54,6 +54,10 @@ components:
         ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
       italic: false, background: '', bold: false, underline: false, icon: 'fa:volume-up'}
     name: button_voice
-    layout_properties: {x: 284.12847900390625, y: 299.00000286102295, width: 41}
+    layout_properties: {x: 375.09722328186035, y: 413.4028043746948, width: 41}
     event_bindings: {click: button_voice_click}
+  - type: Label
+    properties: {}
+    name: label_title
+    layout_properties: {x: 446.1458435058594, y: 16.909716606140137, width: 254}
 is_package: true
