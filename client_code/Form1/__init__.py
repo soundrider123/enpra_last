@@ -28,13 +28,13 @@ class Form1(Form1Template):
     dlg_line = anvil.server.call("loaddialog", title_id)
     self.text_area_1.text = dlg_line
     
-    Globals.mainform.link_1.text =title_name+ '  [ Start ] '
-    Globals.mainform.link_1.tag = title_id
+    Globals.mainform.label_1.text =title_name
+    Globals.mainform.button_start.tag = title_id
     
   def change_title(self, title_name, title_id):     
     dlg_line = anvil.server.call("loaddialog", title_id)
     self.text_area_1.text = dlg_line    
 
-    Globals.mainform.link_1.text =title_name+ '  [ Start ] '
-    Globals.mainform.link_1.tag = title_id
+    Globals.mainform.label_1.text =title_name
+    Globals.mainform.button_start.tag = title_id
     

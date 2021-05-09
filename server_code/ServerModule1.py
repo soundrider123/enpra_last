@@ -116,8 +116,9 @@ def get_userid():
   return userid
 
 @anvil.server.callable
-def get_accuracy(userid):
-  result = requests.get(f'https://43.231.114.140:8080/accuracy?userid={str(userid)}', verify=False).content.decode("utf-8")
+def get_accuracy(userid, lineid):
+  result = requests.get(f'https://43.231.114.140:8080/accuracy?userid={str(userid)}&lineid={str(lineid)}', verify=False).content.decode("utf-8")
+  #print(result)
   return result
 
 @anvil.server.callable

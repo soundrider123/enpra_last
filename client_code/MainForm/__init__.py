@@ -36,22 +36,13 @@ class MainForm(MainFormTemplate):
     self.userid = anvil.server.call('get_userid')
     
     form2_instance = Form2(param='an_argument')
-    form2_instance.init_form(self.userid)
     Globals.form2 = form2_instance
     
-    self.prev = False    
+    self.audiorecord_1.init_userid(self.userid)
 
-    
-  def link_1_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    #print('clicked')
-    title_id = self.link_1.tag
-    
-    frm.init(title_id)
-    self.flow_panel_1.clear()
-    frm.xy_panel_1.remove_from_parent()
-    self.flow_panel_1.add_component(frm.xy_panel_1)
-    
+    self.prev = False   
+    self.check_recording = False
+
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -59,7 +50,8 @@ class MainForm(MainFormTemplate):
     if form1 is None:
       return
     self.flow_panel_1.clear()
-    self.flow_panel_1.add_component(form1)    
+    self.flow_panel_1.add_component(form1)  
+    self.check_recording = False
     pass
 
   def button_2_click(self, **event_args):
@@ -68,7 +60,8 @@ class MainForm(MainFormTemplate):
     if form2 is None:
       return    
     self.flow_panel_1.clear()
-    self.flow_panel_1.add_component(form2)    
+    self.flow_panel_1.add_component(form2) 
+    self.check_recording = False
     pass
 
   def button_3_click(self, **event_args):
@@ -77,17 +70,33 @@ class MainForm(MainFormTemplate):
     if form3 is None:
       return
     self.flow_panel_1.clear()
-    self.flow_panel_1.add_component(form3)    
+    self.flow_panel_1.add_component(form3)
+    self.check_recording = False
     pass
 
   def timer_1_tick(self, **event_args):
     """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
-    isrecording = anvil.js.call_js('get_startrecording_disabled') 
-    #print(isrecording)
-    if (self.prev == True and isrecording == False):
-      Globals.form2.record_answer_clicked()
+    if self.check_recording == True:
+      isrecording = anvil.js.call_js('get_startrecording_disabled') 
+      #print(isrecording)
+      if (self.prev == True and isrecording == False):
+        Globals.form2.record_answer_clicked()
+      
+      self.prev = isrecording
+      
+
+  def button_start_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    title_id = self.button_start.tag
     
-    self.prev = isrecording
+    Globals.form2.init(title_id)
+    self.flow_panel_1.clear()
+    Globals.form2.xy_panel_1.remove_from_parent()
+    self.flow_panel_1.add_component(Globals.form2.xy_panel_1)
+    self.check_recording = True
+    
+    Globals.form2.question_voice()
+
 
 
 
