@@ -46,10 +46,18 @@ components:
     layout_properties: {x: 483.07293701171875, y: 35.50347423553467, width: 251}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Start, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: 'fa:play-circle-o'}
+      foreground: '', visible: true, text: Start accuracy, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
     name: button_start
-    layout_properties: {x: 543.0729370117188, y: 395.3472318649292, width: 150}
+    layout_properties: {x: 483.07293701171875, y: 383.4895963668823, width: 119}
     event_bindings: {click: button_start_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Start matching, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: button_startmatch
+    layout_properties: {x: 618.0556030273438, y: 383.4895963668823, width: 148.993}
+    event_bindings: {click: button_startmatch_click}
 is_package: true

@@ -14,7 +14,6 @@ class Form2(Form2Template):
     self.cur_pos = 0
     self.dialog_id_a = 0
     self.dialog_id_b = 0
-    self.title_id = '1'
     
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -23,7 +22,6 @@ class Form2(Form2Template):
     self.button_match.visible = False
    
   def init(self, title_id):
-    self.title_id = title_id
     self.lines = []
     self.cur_pos = 0
     self.dialog_id_a = 0
@@ -41,8 +39,15 @@ class Form2(Form2Template):
     self.repeating_panel_1.items = self.lines
     
   def button_match_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    """This method is called when the button is clicked"""    
+    Globals.form3.init(Globals.title_id)
+    Globals.form3.label_title.text = Globals.title_name
+    Globals.mainform.flow_panel_1.clear()
+    Globals.form3.xy_panel_1.remove_from_parent()
+    Globals.mainform.flow_panel_1.add_component(Globals.form3.xy_panel_1)
+    Globals.mainform.check_recording2 = True
+    
+    Globals.form3.question_voice()
 
   def button_voice_click(self, **event_args):
     """This method is called when the button is clicked"""

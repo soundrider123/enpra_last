@@ -31,6 +31,9 @@ class Form1(Form1Template):
     self.label_title.text =title_name
     self.button_start.tag = title_id
     
+    Globals.title_id = title_id
+    Globals.title_name = title_name
+    
   def change_title(self, title_name, title_id):     
     dlg_line = anvil.server.call("loaddialog", title_id)
     self.text_area_1.text = dlg_line    
@@ -38,11 +41,13 @@ class Form1(Form1Template):
     self.label_title.text =title_name
     self.button_start.tag = title_id
     
+    Globals.title_id = title_id
+    Globals.title_name = title_name
 
   def button_start_click(self, **event_args):
     """This method is called when the button is clicked"""
     title_id = self.button_start.tag
-    
+       
     Globals.form2.init(title_id)
     Globals.form2.label_title.text = self.label_title.text
     Globals.mainform.flow_panel_1.clear()
@@ -51,4 +56,15 @@ class Form1(Form1Template):
     Globals.mainform.check_recording = True
     
     Globals.form2.question_voice()
+
+  def button_startmatch_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    Globals.form3.init(Globals.title_id)
+    Globals.form3.label_title.text = Globals.title_name
+    Globals.mainform.flow_panel_1.clear()
+    Globals.form3.xy_panel_1.remove_from_parent()
+    Globals.mainform.flow_panel_1.add_component(Globals.form3.xy_panel_1)
+    Globals.mainform.check_recording2 = True
+    
+
 

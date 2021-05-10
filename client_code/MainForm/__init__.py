@@ -56,6 +56,7 @@ class MainForm(MainFormTemplate):
     self.flow_panel_1.clear()
     self.flow_panel_1.add_component(form1)  
     self.check_recording = False
+    self.check_recording2 = False
     pass
 
   def button_2_click(self, **event_args):
@@ -66,6 +67,7 @@ class MainForm(MainFormTemplate):
     self.flow_panel_1.clear()
     self.flow_panel_1.add_component(form2) 
     self.check_recording = False
+    self.check_recording2 = False
     pass
 
   def button_3_click(self, **event_args):
@@ -76,6 +78,7 @@ class MainForm(MainFormTemplate):
     self.flow_panel_1.clear()
     self.flow_panel_1.add_component(form3)
     self.check_recording = False
+    self.check_recording2 = False
     pass
 
   def timer_1_tick(self, **event_args):
