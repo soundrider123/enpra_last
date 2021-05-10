@@ -10,7 +10,6 @@ from io import BytesIO
 import pandas as pd
 import os
 
-
 def checkfile(filename1):
   file_exists = False
   if os.path.isfile(f'/{filename1}.csv'):
@@ -87,6 +86,22 @@ def loadtalk(title_id):
   df = df[df['title_id'] == str(title_id)]
   df = df[['dialog_id', 'dialog_line']]
   return df.to_dict(orient="records")
+
+@anvil.server.callable
+def loadanswer(title_id):
+  
+  checkfile('dialog_dialog')
+    
+  df = pd.read_csv('/dialog_dialog.csv', delimiter='|')
+  df['title_id'] = df['title_id'].astype(str)
+  df = df[df['title_id'] == str(title_id)]
+  df = df[df['dialog_line'].str.contains('B:')]
+   
+  df = df[['dialog_id', 'dialog_line']]
+  #df = shuffle(df)
+  #df = df.reset_index()
+  df = df.sample(frac=1).reset_index(drop=True)
+  return df.to_dict(orient="records") 
 
 def get_newid():
   max_ids = app_tables.users.search(tables.order_by("userid", ascending=False))

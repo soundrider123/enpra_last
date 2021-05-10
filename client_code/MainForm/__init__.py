@@ -91,7 +91,13 @@ class MainForm(MainFormTemplate):
       
       self.prev = isrecording
       
-
+    if self.check_recording2 == True:
+      isrecording = anvil.js.call_js('get_startrecording_disabled') 
+      #print(isrecording)
+      if (self.prev == True and isrecording == False):
+        Globals.form3.record_answer_clicked()
+      
+      self.prev = isrecording
 
 
 

@@ -66,5 +66,7 @@ class Form1(Form1Template):
     Globals.mainform.flow_panel_1.add_component(Globals.form3.xy_panel_1)
     Globals.mainform.check_recording2 = True
     
+    Globals.form3.question_voice()
+    
 
 
