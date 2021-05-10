@@ -51,12 +51,12 @@ components:
     layout_properties: {grid_position: 'FYBNFC,DFNSTU'}
   - type: Spacer
     properties: {height: 32}
-    name: spacer_3
-    layout_properties: {grid_position: 'MCGMXP,VEJKKV'}
+    name: spacer_7
+    layout_properties: {grid_position: 'CUPFJY,NYKZEM'}
   - type: Spacer
     properties: {height: 32}
-    name: spacer_5
-    layout_properties: {grid_position: 'TDCBPL,AOFVTL'}
+    name: spacer_3
+    layout_properties: {grid_position: 'MCGMXP,VEJKKV'}
   - type: Spacer
     properties: {height: 32}
     name: spacer_4

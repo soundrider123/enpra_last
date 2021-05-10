@@ -37,12 +37,16 @@ class MainForm(MainFormTemplate):
     
     form2_instance = Form2(param='an_argument')
     Globals.form2 = form2_instance
+
+    form3_instance = Form3(param='an_argument')
+    Globals.form3 = form3_instance
     
     self.audiorecord_1.init_userid(self.userid)
 
     self.prev = False   
     self.check_recording = False
 
+    self.check_recording2 = False
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""

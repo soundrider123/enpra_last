@@ -14,6 +14,7 @@ class Form2(Form2Template):
     self.cur_pos = 0
     self.dialog_id_a = 0
     self.dialog_id_b = 0
+    self.title_id = '1'
     
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -22,6 +23,7 @@ class Form2(Form2Template):
     self.button_match.visible = False
    
   def init(self, title_id):
+    self.title_id = title_id
     self.lines = []
     self.cur_pos = 0
     self.dialog_id_a = 0
