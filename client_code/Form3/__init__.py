@@ -26,13 +26,14 @@ class Form3(Form3Template):
     self.lines = []
     self.cur_pos = 0
     self.dialog_id_a = 0
+    self.correct = 0
     
     dlg_line = anvil.server.call('loadtalk', title_id)
     self.dlg_lines = dlg_line
     left_line = int(len(self.dlg_lines) / 2)
     self.all = left_line 
     self.label_left.text = str(left_line)
-    self.label_correct.text = '0 / ' + str(self.all) 
+    self.label_correct.text = str(self.correct) + ' / ' + str(self.all) 
     
     self.dialog_id_a = self.dlg_lines[self.cur_pos]['dialog_id']
     
@@ -40,9 +41,9 @@ class Form3(Form3Template):
     self.repeating_panel_2.items = self.lines
     
     ###################################
-    ans_lines = anvil.server.call('loadanswer', title_id)
+    self.ans_lines = anvil.server.call('loadanswer', title_id)
     itm_lines=[]
-    for itm in ans_lines:
+    for itm in self.ans_lines:
       itm_lines.append({'dialog_line': itm['dialog_line']})
     self.repeating_panel_1.items = itm_lines
     
@@ -53,24 +54,29 @@ class Form3(Form3Template):
     
   def record_answer_clicked(self):
     if len(self.dlg_lines) >= self.cur_pos+2:    
-      accuracy = anvil.server.call('get_accuracy', Globals.mainform.userid, self.dialog_id_b)
-      self.label_accuracy.text = str(accuracy) 
-      self.lines.append({'dialog_line': self.dlg_lines[self.cur_pos+1]['dialog_line']})
-      if len(self.dlg_lines) > self.cur_pos+2:
-        self.lines.append({'dialog_line': self.dlg_lines[self.cur_pos+2]['dialog_line']})
-        self.cur_pos = self.cur_pos + 2
-
-        if len(self.dlg_lines) > self.cur_pos+1:
-          self.text_box_line.text = self.dlg_lines[self.cur_pos+1]['dialog_line']
-          self.dialog_id_a = self.dlg_lines[self.cur_pos]['dialog_id']
-          self.dialog_id_b = self.dlg_lines[self.cur_pos+1]['dialog_id']
+      dialog_id_b = anvil.server.call('get_transcription', Globals.mainform.userid, Globals.title_id)
+      itm_lines=[]
+      for b_line in self.ans_lines:
+        if b_line['dialog_id'] == str(dialog_id_b):
+          self.lines.append({'dialog_line': b_line['dialog_line']})
+          
+          if str(self.dlg_lines[self.cur_pos+1]['dialog_id']) == str(dialog_id_b): 
+            self.correct = int(self.correct) + 1
+            self.label_correct.text = str(self.correct) + ' / ' + str(self.all) 
+          
+          if len(self.dlg_lines) > self.cur_pos+2:
+            self.lines.append({'dialog_line': self.dlg_lines[self.cur_pos+2]['dialog_line']})
+            self.cur_pos = self.cur_pos + 2
+            self.dialog_id_a = self.dlg_lines[self.cur_pos]['dialog_id']
+            self.question_voice()
+            
           left_line = int(self.label_left.text)-1
-          self.label_left.text = str(left_line)
-          self.question_voice()
-      else:
-        self.cur_pos = self.cur_pos + 1
-        self.button_match.visible = True
-        left_line = int(self.label_left.text)-1
-        self.label_left.text = str(left_line)        
-      self.repeating_panel_1.items = self.lines
+          self.label_left.text = str(left_line)            
+          self.repeating_panel_2.items = self.lines
+          continue
+          
+        itm_lines.append({'dialog_line': b_line['dialog_line']})
+        self.repeating_panel_1.items = itm_lines
+      
+      
       

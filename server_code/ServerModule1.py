@@ -137,8 +137,8 @@ def get_accuracy(userid, lineid):
   return result
 
 @anvil.server.callable
-def get_transcription(userid):
-  result = requests.get(f'https://43.231.114.140:8080/trans?userid={str(userid)}', verify=False).content.decode("utf-8")
+def get_transcription(userid,title_id):
+  result = requests.get(f'https://43.231.114.140:8080/trans?userid={str(userid)}&titleid={str(title_id)}', verify=False).content.decode("utf-8")
   return result
 
 @anvil.server.callable
