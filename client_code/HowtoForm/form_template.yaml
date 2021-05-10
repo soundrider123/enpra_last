@@ -1,3 +1,31 @@
-container: {type: ColumnPanel}
-components: []
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+components:
+- type: FlowPanel
+  properties: {}
+  name: flow_panel_1
+  layout_properties: {grid_position: 'OAPDFO,XJXCNP'}
+  components:
+  - type: TextArea
+    properties: {role: null, align: left, height: 357, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: 'This program
+        tried to make some feedback system for practicing english speaking, using
+        speech recognition and also pronunciation scoring.
+
+
+        User could choose from wide variety of topic and practice it. All practicing
+        results would be saved and user can see later how he or she made some improvements.
+
+
+        After choosing practice, you can start by clicking "Start Recording", which
+        is located left bottom side of interface.
+
+
+        Some antivirus is interfering with outgoing and ingoing internet trafic, so
+        if this happens just allow permission.', font_size: null, auto_expand: false,
+      font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
+      bold: false, underline: false}
+    name: text_area_1
+    layout_properties: {width: 515}
 is_package: true

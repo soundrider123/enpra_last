@@ -1,5 +1,16 @@
 container:
   type: ColumnPanel
   properties: {col_widths: '{}'}
-components: []
+components:
+- type: FlowPanel
+  properties: {}
+  name: flow_panel_1
+  layout_properties: {grid_position: 'TPSXXJ,EKXBGG'}
+  components:
+  - type: RepeatingPanel
+    properties: {role: conversation-panel, tooltip: '', border: '', foreground: '',
+      items: null, visible: true, spacing_above: small, spacing_below: small, item_template: ProfileForm.ItemTemplate6,
+      background: ''}
+    name: repeating_panel_1
+    layout_properties: {grid_position: 'KOEEDH,ELRUKW', width: 329}
 is_package: true

@@ -57,7 +57,7 @@ class Form3(Form3Template):
       dialog_id_b = anvil.server.call('get_transcription', Globals.mainform.userid, Globals.title_id)
       itm_lines=[]
       for b_line in self.ans_lines:
-        if b_line['dialog_id'] == str(dialog_id_b):
+        if str(b_line['dialog_id']) == str(dialog_id_b):
           self.lines.append({'dialog_line': b_line['dialog_line']})
           
           if str(self.dlg_lines[self.cur_pos+1]['dialog_id']) == str(dialog_id_b): 
