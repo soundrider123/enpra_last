@@ -43,8 +43,12 @@ class Form3(Form3Template):
     ###################################
     self.ans_lines = anvil.server.call('loadanswer', title_id)
     itm_lines=[]
+    self.left_lines = []
+    self.b_dic={}
     for itm in self.ans_lines:
       itm_lines.append({'dialog_line': itm['dialog_line']})
+      self.left_lines.append(int(itm['dialog_id']))
+      self.b_dic[str(itm['dialog_id'])] = itm['dialog_line']
     self.repeating_panel_1.items = itm_lines
     
     
@@ -56,9 +60,11 @@ class Form3(Form3Template):
     if len(self.dlg_lines) >= self.cur_pos+2:    
       dialog_id_b = anvil.server.call('get_transcription', Globals.mainform.userid, Globals.title_id)
       itm_lines=[]
-      for b_line in self.ans_lines:
-        if str(b_line['dialog_id']) == str(dialog_id_b):
-          self.lines.append({'dialog_line': b_line['dialog_line']})
+      b_lines = []
+      for b_lineid in self.left_lines:
+        
+        if str(b_lineid) == str(dialog_id_b):
+          self.lines.append({'dialog_line': self.b_dic[str(b_lineid)]})
           
           if str(self.dlg_lines[self.cur_pos+1]['dialog_id']) == str(dialog_id_b): 
             self.correct = int(self.correct) + 1
@@ -74,9 +80,12 @@ class Form3(Form3Template):
           self.label_left.text = str(left_line)            
           self.repeating_panel_2.items = self.lines
           continue
-          
-        itm_lines.append({'dialog_line': b_line['dialog_line']})
-        self.repeating_panel_1.items = itm_lines
+        
+        b_lines.append(int(b_lineid))
+        itm_lines.append({'dialog_line': self.b_dic[str(b_lineid)]})
+      
+      self.repeating_panel_1.items = itm_lines
+      self.left_lines = b_lines
       
       
       
