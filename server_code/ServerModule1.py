@@ -4,11 +4,57 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests
 from io import BytesIO
 import pandas as pd
 import os
+
+def get_user():
+  username = anvil.google.auth.get_user_email()
+  
+  user = None
+  for u in app_tables.users.search(email = username):
+    user = u
+  
+  if user is None:
+    user = app_tables.users.add_row(email=username, signed_up=datetime.now())
+
+  return user
+
+@anvil.server.callable
+def save_result(p_name, p_type, p_result):
+  
+  user = get_user()
+  mn_now = datetime.now() + timedelta(hours=8)
+  app_tables.history.add_row(practicename=p_name,practicetype=p_type, result= p_result, date=mn_now,user=user)
+
+def insert(df, row):
+  insert_loc = df.index.max()
+
+  if pd.isna(insert_loc):
+    df.loc[0] = row
+  else:
+    df.loc[insert_loc + 1] = row
+
+@anvil.server.callable
+def get_history():
+  user = get_user()
+  col_names =  ['practicename','practicetype','result', 'date']
+  df  = pd.DataFrame(columns = col_names)
+  
+  for r in app_tables.history.search(user=user):
+    date = r['date']
+    insert(df,[r['practicename'] ,r['practicetype'], r['result'], f'{date:%Y-%m-%d %H:%M}' ])
+
+
+  df = df.sort_values(['date'], ascending=[False])
+  df['practicename'] = df['practicename'].astype(str)
+  df['practicetype'] = df['practicetype'].astype(str)
+  df['result'] = df['result'].astype(str)
+  df['date'] = df['date'].astype(str) 
+      
+  return df.to_dict(orient="records")
 
 def checkfile(filename1):
   file_exists = False

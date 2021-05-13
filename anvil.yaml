@@ -28,6 +28,34 @@ db_schema:
       admin_ui: {order: 1, width: 200}
   access: {python_name: csvfile, app_id: AXC53TQVJN4X2P4C, server: full, client: none,
     table_mapping_name: null, table_mapping_id: null, table_id: 124475}
+- name: history
+  id: 126632
+  python_name: history
+  columns:
+    1SXKuuUenqU=:
+      name: result
+      type: string
+      admin_ui: {order: 2, width: 200}
+    5q56qWi0UDE=:
+      name: date
+      type: datetime
+      admin_ui: {order: 3, width: 200}
+    7d8nAxwHav0=:
+      name: practicetype
+      type: string
+      admin_ui: {order: 1, width: 200}
+    MbSQQouLbe0=:
+      name: practicename
+      type: string
+      admin_ui: {order: 0, width: 200}
+    uQcBCpMftOQ=:
+      name: user
+      type: liveObject
+      backend: anvil.tables.Row
+      admin_ui: {order: 4, width: 200}
+      table_id: 114436
+  access: {python_name: history, app_id: AXC53TQVJN4X2P4C, server: full, client: none,
+    table_mapping_name: null, table_mapping_id: null, table_id: 126632}
 - name: Users
   id: 114436
   python_name: users

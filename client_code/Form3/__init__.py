@@ -69,6 +69,9 @@ class Form3(Form3Template):
           if str(self.dlg_lines[self.cur_pos+1]['dialog_id']) == str(dialog_id_b): 
             self.correct = int(self.correct) + 1
             self.label_correct.text = str(self.correct) + ' / ' + str(self.all) 
+          else:
+            b_lines.append(int(b_lineid))
+            itm_lines.append({'dialog_line': self.b_dic[str(b_lineid)]})
           
           if len(self.dlg_lines) > self.cur_pos+2:
             self.lines.append({'dialog_line': self.dlg_lines[self.cur_pos+2]['dialog_line']})
@@ -79,6 +82,10 @@ class Form3(Form3Template):
           left_line = int(self.label_left.text)-1
           self.label_left.text = str(left_line)            
           self.repeating_panel_2.items = self.lines
+          
+          if left_line == 0:
+            anvil.server.call('save_result', self.label_title.text, 'matching', self.label_correct.text)
+
           continue
         
         b_lines.append(int(b_lineid))

@@ -8,6 +8,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from EnPra import Globals
 
+
 class Form2(Form2Template):
   def __init__(self, **properties):
     self.lines = []
@@ -27,6 +28,7 @@ class Form2(Form2Template):
     self.dialog_id_a = 0
     self.dialog_id_b = 0    
     self.button_match.visible = False
+    self.accuracy = []
     
     dlg_line = anvil.server.call('loadtalk', title_id)
     self.dlg_lines = dlg_line
@@ -62,7 +64,11 @@ class Form2(Form2Template):
   def record_answer_clicked(self):
     if len(self.dlg_lines) >= self.cur_pos+2:    
       accuracy = anvil.server.call('get_accuracy', Globals.mainform.userid, self.dialog_id_b)
-      self.label_accuracy.text = str(accuracy) 
+      self.label_accuracy.text = str(accuracy)
+      self.accuracy.append(float(accuracy))
+      mean_acc = sum(self.accuracy) / float(len(self.accuracy)) 
+      self.label_overall.text = "%.02f" % mean_acc
+      
       self.lines.append({'dialog_line': self.dlg_lines[self.cur_pos+1]['dialog_line']})
       if len(self.dlg_lines) > self.cur_pos+2:
         self.lines.append({'dialog_line': self.dlg_lines[self.cur_pos+2]['dialog_line']})
@@ -79,7 +85,10 @@ class Form2(Form2Template):
         self.cur_pos = self.cur_pos + 1
         self.button_match.visible = True
         left_line = int(self.label_left.text)-1
-        self.label_left.text = str(left_line)        
+        self.label_left.text = str(left_line) 
+        
+        anvil.server.call('save_result', self.label_title.text, 'accuracy', self.label_overall.text)
+        
       self.repeating_panel_1.items = self.lines
   
   

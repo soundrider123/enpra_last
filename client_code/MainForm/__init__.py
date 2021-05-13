@@ -68,6 +68,7 @@ class MainForm(MainFormTemplate):
     self.flow_panel_1.add_component(form2) 
     self.check_recording = False
     self.check_recording2 = False
+    form2.refresh()
     pass
 
   def button_3_click(self, **event_args):

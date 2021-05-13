@@ -7,10 +7,29 @@ components:
   name: flow_panel_1
   layout_properties: {grid_position: 'TPSXXJ,EKXBGG'}
   components:
-  - type: RepeatingPanel
-    properties: {role: conversation-panel, tooltip: '', border: '', foreground: '',
-      items: null, visible: true, spacing_above: small, spacing_below: small, item_template: ProfileForm.ItemTemplate6,
-      background: ''}
-    name: repeating_panel_1
-    layout_properties: {grid_position: 'KOEEDH,ELRUKW', width: 329}
+  - type: DataGrid
+    properties:
+      role: null
+      columns:
+      - {id: LWVZVT, title: Practice name, data_key: practicename}
+      - {id: EVUWQK, title: Type, data_key: practicetype}
+      - {id: NXJFBS, title: Result, data_key: result}
+      - {id: AZGQRD, title: datetime, data_key: date}
+      auto_header: true
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 5
+      visible: true
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
+    name: data_grid_1
+    layout_properties: {width: 700.535}
+    components:
+    - type: RepeatingPanel
+      properties: {spacing_above: none, spacing_below: none, item_template: ProfileForm.RowTemplate1}
+      name: repeating_panel_1
+      layout_properties: {}
 is_package: true

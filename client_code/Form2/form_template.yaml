@@ -12,9 +12,12 @@ components:
     name: text_box_line
     layout_properties: {x: 14.11447900390624, y: 412.9930753707886, width: 360}
   - type: Label
-    properties: {}
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: '0.00', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
     name: label_accuracy
-    layout_properties: {x: 586.1284790039062, y: 208.97917461395264, width: 90}
+    layout_properties: {x: 586.1284790039062, y: 208.97571086883545, width: 90}
   - type: Label
     properties: {}
     name: label_left
@@ -60,4 +63,25 @@ components:
     properties: {}
     name: label_title
     layout_properties: {x: 446.1458435058594, y: 16.909716606140137, width: 254}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Overall accuracy:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties: {x: 448.14239501953125, y: 283.8888883590698, width: 118.98953247070312}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: '0.00', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_overall
+    layout_properties: {x: 586.1284790039062, y: 283.8888883590698, width: 81}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: (less is better), font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_5
+    layout_properties: {x: 448.14239501953125, y: 308.88196086883545, width: 101}
 is_package: true
