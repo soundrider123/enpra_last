@@ -63,9 +63,10 @@ components:
   - type: TextArea
     properties: {role: null, align: left, height: '', tooltip: '', placeholder: '',
       border: '', enabled: true, foreground: '', visible: true, text: 'If shows red
-        error window, paste this url in new tab and then allow SSL permission! https://43.231.114.140:8080/getaudio/1',
+        error window, paste this url in new tab and to allow SSL permission, click
+        Advanced and click Proceed to and then re-enter to app again!  https://43.231.114.140:8080/getaudio/1        ',
       font_size: null, auto_expand: false, font: '', spacing_above: small, spacing_below: small,
       italic: false, background: '', bold: false, underline: false}
     name: text_area_2
-    layout_properties: {x: 10, y: 437.6736173629761, width: 676.76078}
+    layout_properties: {x: 10, y: 437.6736173629761, width: 706.53478}
 is_package: true
