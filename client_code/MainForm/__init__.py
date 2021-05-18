@@ -47,6 +47,7 @@ class MainForm(MainFormTemplate):
     self.check_recording = False
 
     self.check_recording2 = False
+    
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -99,6 +100,11 @@ class MainForm(MainFormTemplate):
         Globals.form3.record_answer_clicked()
       
       self.prev = isrecording
+
+  def form_show(self, **event_args):
+    """This method is called when the HTML panel is shown on the screen"""
+    pass
+
 
 
 
