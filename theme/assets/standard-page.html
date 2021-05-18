@@ -63,6 +63,17 @@
   
 	function PlaySound(url) {
   		  var audio = new Audio(url);
-		  audio.play();
+          audio.src = url;
+          var playPromise = audio.play();
+          if (playPromise !== undefined) {
+                playPromise.then(function() {
+                   audio.addEventListener('timeupdate',function() {
+                      console.log(audio.currentTime, audio.duration);
+                   }, true);
+                }).catch(function(error) {
+                      console.error('Failed to start your sound, retrying.');
+                });
+          }      
       }   
 </script>
+<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>

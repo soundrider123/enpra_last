@@ -194,10 +194,11 @@ def get_htmlcode(userid):
 <div>
         <button id="start-recording" >Start Recording</button>
     </div>
+    
     <script type="text/javascript">
 
     var startRecording = document.getElementById('start-recording');
-    var recordAudio;
+    var recordAudio ;
     
     function get_startrecording_disabled() {       
         return startRecording.disabled;
