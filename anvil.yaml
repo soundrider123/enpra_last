@@ -9,69 +9,55 @@ startup: {type: form, module: MainForm}
 package_name: EnPra
 allow_embedding: false
 name: EnPra
-runtime_options: {version: 2, client_version: '3', server_version: python3-full}
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {}
 startup_form: Form1
 native_deps: {head_html: '<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>'}
 db_schema:
-- name: csvfile
-  id: 124475
-  python_name: csvfile
-  columns:
-    86aGv8u2j30=:
-      name: filename
+  users:
+    title: Users
+    client: none
+    server: full
+    columns:
+    - name: email
+      admin_ui: {width: 200}
       type: string
-      admin_ui: {order: 0, width: 200}
-    kB9gCWzy00s=:
-      name: filemedia
-      type: media
-      admin_ui: {order: 1, width: 200}
-  access: {python_name: csvfile, app_id: AXC53TQVJN4X2P4C, server: full, client: none,
-    table_mapping_name: null, table_mapping_id: null, table_id: 124475}
-- name: history
-  id: 126632
-  python_name: history
-  columns:
-    1SXKuuUenqU=:
-      name: result
-      type: string
-      admin_ui: {order: 2, width: 200}
-    5q56qWi0UDE=:
-      name: date
+    - name: signed_up
+      admin_ui: {width: 200}
       type: datetime
-      admin_ui: {order: 3, width: 200}
-    7d8nAxwHav0=:
-      name: practicetype
-      type: string
-      admin_ui: {order: 1, width: 200}
-    MbSQQouLbe0=:
-      name: practicename
-      type: string
-      admin_ui: {order: 0, width: 200}
-    uQcBCpMftOQ=:
-      name: user
-      type: liveObject
-      backend: anvil.tables.Row
-      admin_ui: {order: 4, width: 200}
-      table_id: 114436
-  access: {python_name: history, app_id: AXC53TQVJN4X2P4C, server: full, client: none,
-    table_mapping_name: null, table_mapping_id: null, table_id: 126632}
-- name: Users
-  id: 114436
-  python_name: users
-  columns:
-    ERxZQudtb0s=:
-      name: signed_up
-      type: datetime
-      admin_ui: {order: 1, width: 200}
-    Vs3AkZ5+GKQ=:
-      name: userid
+    - name: userid
+      admin_ui: {width: 200}
       type: number
-      admin_ui: {order: 2, width: 200}
-    YvySLo2i9QA=:
-      name: email
+  csvfile:
+    title: csvfile
+    client: none
+    server: full
+    columns:
+    - name: filename
+      admin_ui: {width: 200}
       type: string
-      admin_ui: {order: 0, width: 200}
-  access: {python_name: users, app_id: AXC53TQVJN4X2P4C, server: full, client: none,
-    table_mapping_name: null, table_mapping_id: null, table_id: 114436}
+    - name: filemedia
+      admin_ui: {width: 200}
+      type: media
+  history:
+    title: history
+    client: none
+    server: full
+    columns:
+    - name: practicename
+      admin_ui: {width: 200}
+      type: string
+    - name: practicetype
+      admin_ui: {width: 200}
+      type: string
+    - name: result
+      admin_ui: {width: 200}
+      type: string
+    - name: date
+      admin_ui: {width: 200}
+      type: datetime
+    - name: user
+      admin_ui: {width: 200}
+      type: link_single
+      target: users
 renamed: true
